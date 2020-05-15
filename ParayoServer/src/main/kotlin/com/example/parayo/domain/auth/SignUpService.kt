@@ -24,7 +24,7 @@ class SignUpService @Autowired constructor(
     }
 
     private fun validateEmail(email: String) {
-        val isNotValidEmail = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+//.[A-Z]{2,6}$"
+        val isNotValidEmail = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$"
             .toRegex(RegexOption.IGNORE_CASE)
             .matches(email)
             .not()
