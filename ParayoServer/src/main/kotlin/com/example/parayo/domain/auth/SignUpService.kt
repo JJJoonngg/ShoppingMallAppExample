@@ -1,6 +1,7 @@
 package com.example.parayo.domain.auth
 
 import com.example.parayo.common.ParayoException
+import com.example.parayo.domain.user.User
 import com.example.parayo.domain.user.UserRepository
 import org.mindrot.jbcrypt.BCrypt
 import org.springframework.beans.factory.annotation.Autowired
