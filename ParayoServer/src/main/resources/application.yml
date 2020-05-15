@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/parayo?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSl=false
+    url: jdbc:mysql://parayo-db-dev-01.cpeuhtlp2fq4.us-east-2.rds.amazonaws.com/parayo?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false
     username: parayo
     password: parayopassword
     data-username: parayo

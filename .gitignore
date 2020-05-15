@@ -4,6 +4,7 @@
 
 .idea/
 gradlew.*
+application.yml
 
 ### Android ###
 # Built application files
