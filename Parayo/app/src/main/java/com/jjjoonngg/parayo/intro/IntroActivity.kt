@@ -4,8 +4,13 @@ import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import com.jjjoonngg.parayo.api.ParayoApi
+import com.jjjoonngg.parayo.signup.SignUpActivity
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.jetbrains.anko.setContentView
+import org.jetbrains.anko.startActivity
 import java.lang.Exception
 
 class IntroActivity : Activity() {
@@ -14,13 +19,10 @@ class IntroActivity : Activity() {
         val ui = IntroActivityUI()
         ui.setContentView(this)
 
-        runBlocking {
-            try {
-                val response = ParayoApi.instance.hello()
-                Log.d("IntroActivity", response.data)
-            } catch (exception: Exception) {
-                Log.e("IntroActivity", "Hello API 호출 오류", exception)
-            }
+        GlobalScope.launch {
+            delay(1000)
+            startActivity<SignUpActivity>()
+            finish()
         }
     }
 }
