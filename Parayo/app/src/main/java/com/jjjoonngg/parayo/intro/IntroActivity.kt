@@ -4,6 +4,7 @@ import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import com.jjjoonngg.parayo.api.ParayoApi
+import com.jjjoonngg.parayo.signin.SignInActivity
 import com.jjjoonngg.parayo.signup.SignUpActivity
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -21,7 +22,7 @@ class IntroActivity : Activity() {
 
         GlobalScope.launch {
             delay(1000)
-            startActivity<SignUpActivity>()
+            startActivity<SignInActivity>()
             finish()
         }
     }
