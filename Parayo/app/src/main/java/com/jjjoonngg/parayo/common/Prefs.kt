@@ -33,8 +33,8 @@ object Prefs {
             .apply()
 
     var userId
-        get() = prefs.getString(USER_ID, null)
+        get() = prefs.getLong(USER_ID, 0)
         set(value) = prefs.edit()
-            .putString(USER_ID, value)
+            .putLong(USER_ID, value)
             .apply()
 }
