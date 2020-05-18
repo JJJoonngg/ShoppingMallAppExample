@@ -28,3 +28,35 @@ private fun borderBG(
 
     return layerDrawable
 }
+
+fun borderLeft(
+    color: String = "#1F000000",
+    width: Int
+) = borderBG(
+    borderColor = color,
+    borderWidthLeft = width
+)
+
+fun borderTop(
+    color: String = "#1F000000",
+    width: Int
+) = borderBG(
+    borderColor = color,
+    borderWidthTop = width
+)
+
+fun borderRight(
+    color: String = "#1F000000",
+    width: Int
+) = borderBG(
+    borderColor = color,
+    borderWidthRight = width
+)
+
+fun borderBottom(
+    color: String = "#1F000000",
+    width: Int
+) = borderBG(
+    borderColor = color,
+    borderWidthBottom = width
+)
