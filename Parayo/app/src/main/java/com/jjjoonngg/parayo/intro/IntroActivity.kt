@@ -4,6 +4,8 @@ import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import com.jjjoonngg.parayo.api.ParayoApi
+import com.jjjoonngg.parayo.common.Prefs
+import com.jjjoonngg.parayo.product.ProductMainActivity
 import com.jjjoonngg.parayo.signin.SignInActivity
 import com.jjjoonngg.parayo.signup.SignUpActivity
 import kotlinx.coroutines.GlobalScope
@@ -22,7 +24,11 @@ class IntroActivity : Activity() {
 
         GlobalScope.launch {
             delay(1000)
-            startActivity<SignInActivity>()
+            if (Prefs.token.isNullOrEmpty()) {
+                startActivity<SignInActivity>()
+            } else {
+                startActivity<ProductMainActivity>()
+            }
             finish()
         }
     }
