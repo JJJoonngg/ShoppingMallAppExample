@@ -36,6 +36,9 @@ class ProductMainUI(
             }.lparams(matchParent, matchParent)
 
             navigationView = navigationView {
+                ProductMainNavHeader()
+                    .createView(AnkoContext.create(context, this))
+                    .run(::addHeaderView)
             }.lparams(wrapContent, matchParent) {
                 gravity = Gravity.START
             }
