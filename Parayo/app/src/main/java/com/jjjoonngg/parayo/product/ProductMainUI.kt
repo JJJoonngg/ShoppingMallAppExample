@@ -2,11 +2,13 @@ package com.jjjoonngg.parayo.product
 
 import android.view.Gravity
 import android.view.MenuItem.SHOW_AS_ACTION_ALWAYS
-import android.widget.Toolbar
+import androidx.appcompat.widget.Toolbar
+import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.jjjoonngg.parayo.R
 import com.jjjoonngg.parayo.view.borderBottom
 import org.jetbrains.anko.*
+import org.jetbrains.anko.appcompat.v7.toolbar
 import org.jetbrains.anko.design.navigationView
 import org.jetbrains.anko.support.v4.drawerLayout
 
@@ -14,11 +16,14 @@ class ProductMainUI(
     private val viewModel: ProductMainViewModel
 ) : AnkoComponent<ProductMainActivity> {
 
+    lateinit var drawerLayout: DrawerLayout
     lateinit var navigationView: NavigationView
     lateinit var toolbar: Toolbar
 
     override fun createView(ui: AnkoContext<ProductMainActivity>) =
         ui.drawerLayout {
+            drawerLayout = this
+
             verticalLayout {
                 toolbar = toolbar {
                     title = "Parayo"
