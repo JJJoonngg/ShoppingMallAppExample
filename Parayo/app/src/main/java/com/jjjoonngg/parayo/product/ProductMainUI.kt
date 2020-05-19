@@ -13,7 +13,9 @@ import com.jjjoonngg.parayo.signin.SignInActivity
 import com.jjjoonngg.parayo.view.borderBottom
 import org.jetbrains.anko.*
 import org.jetbrains.anko.appcompat.v7.toolbar
+import org.jetbrains.anko.design.floatingActionButton
 import org.jetbrains.anko.design.navigationView
+import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.support.v4.drawerLayout
 
 class ProductMainUI(
@@ -29,17 +31,27 @@ class ProductMainUI(
         ui.drawerLayout {
             drawerLayout = this
 
-            verticalLayout {
-                toolbar = toolbar {
-                    title = "Parayo"
-                    bottomPadding = dip(1)
-                    background = borderBottom(width = dip(1))
-                    menu.add("Search")
-                        .setIcon(R.drawable.ic_search_black)
-                        .setShowAsAction(SHOW_AS_ACTION_ALWAYS)
-                }.lparams(matchParent, wrapContent)
-            }.lparams(matchParent, matchParent)
+            frameLayout {
+                verticalLayout {
+                    toolbar = toolbar {
+                        title = "Parayo"
+                        bottomPadding = dip(1)
+                        background = borderBottom(width = dip(1))
+                        menu.add("Search")
+                            .setIcon(R.drawable.ic_search_black)
+                            .setShowAsAction(SHOW_AS_ACTION_ALWAYS)
+                    }.lparams(matchParent, wrapContent)
+                }.lparams(matchParent, matchParent)
 
+                floatingActionButton {
+                    imageResource = R.drawable.ic_add
+                    onClick { viewModel.openRegistrationActivity() }
+                }.lparams {
+                    bottomMargin = dip(20)
+                    marginEnd = dip(20)
+                    gravity = Gravity.END or Gravity.BOTTOM
+                }
+            }
             navigationView = navigationView {
                 ProductMainNavHeader()
                     .createView(AnkoContext.create(context, this))
