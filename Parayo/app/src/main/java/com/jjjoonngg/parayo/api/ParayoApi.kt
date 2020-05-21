@@ -3,10 +3,10 @@ package com.jjjoonngg.parayo.api
 import com.jjjoonngg.parayo.api.request.SignInRequest
 import com.jjjoonngg.parayo.api.request.SignUpRequest
 import com.jjjoonngg.parayo.api.response.ApiResponse
+import com.jjjoonngg.parayo.api.response.ProductImageUploadResponse
 import com.jjjoonngg.parayo.api.response.SignInResponse
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import okhttp3.MultipartBody
+import retrofit2.http.*
 
 interface ParayoApi {
 
@@ -25,4 +25,10 @@ interface ParayoApi {
     @POST("/api/v1/signin")
     suspend fun signIn(@Body signInRequest: SignInRequest)
             : ApiResponse<SignInResponse>
+
+    @Multipart
+    @POST("api/v1/product_images")
+    suspend fun uploadProductImages(
+        @Part images: MultipartBody.Part
+    ): ApiResponse<ProductImageUploadResponse>
 }
