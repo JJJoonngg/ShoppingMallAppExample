@@ -5,11 +5,13 @@ import android.app.Application
 import android.content.Intent
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.jjjoonngg.parayo.api.request.ProductRegistrationRequest
 import com.jjjoonngg.parayo.api.response.ApiResponse
 import com.jjjoonngg.parayo.api.response.ProductImageUploadResponse
 import com.jjjoonngg.parayo.product.category.categoryList
 import kotlinx.coroutines.launch
 import net.codephobia.ankomvvm.lifecycle.BaseViewModel
+import retrofit2.Response
 
 class ProductRegistrationViewModel(app: Application) : BaseViewModel(app) {
 
@@ -20,7 +22,7 @@ class ProductRegistrationViewModel(app: Application) : BaseViewModel(app) {
         MutableLiveData(null as String?)
     )
 
-    val imagesIds: MutableList<Long?> =
+    val imageIds: MutableList<Long?> =
         mutableListOf(null, null, null, null)
 
     val productName = MutableLiveData("")
@@ -85,9 +87,36 @@ class ProductRegistrationViewModel(app: Application) : BaseViewModel(app) {
     private fun onImageUploadResponse(response: ApiResponse<ProductImageUploadResponse>) {
         if (response.success && response.data != null) {
             imagesUrls[currentImageNum].value = response.data.filePath
-            imagesIds[currentImageNum] = response.data.productImageId
+            imageIds[currentImageNum] = response.data.productImageId
         } else {
             toast(response.message ?: "알 수 없는 오류가 발생했습니다.")
+        }
+    }
+
+    suspend fun register() {
+        val request = extractRequest()
+        val response = ProductRegistrar().register(request)
+        onRegistrationResponse(response)
+    }
+
+    private fun extractRequest(): ProductRegistrationRequest =
+        ProductRegistrationRequest(
+            productName.value,
+            description.value,
+            price.value?.toIntOrNull(),
+            categoryIdSelected,
+            imageIds
+        )
+
+    private fun onRegistrationResponse(
+        response: ApiResponse<Response<Void>>
+    ) {
+        if (response.success) {
+            confirm("상품이 등록되었습니다.") {
+                finishActivity()
+            }
+        } else {
+            toast(response.message ?: "알 수 없는 오류가 발생했습니다")
         }
     }
 

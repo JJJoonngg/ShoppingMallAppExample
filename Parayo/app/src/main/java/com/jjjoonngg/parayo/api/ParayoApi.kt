@@ -1,11 +1,13 @@
 package com.jjjoonngg.parayo.api
 
+import com.jjjoonngg.parayo.api.request.ProductRegistrationRequest
 import com.jjjoonngg.parayo.api.request.SignInRequest
 import com.jjjoonngg.parayo.api.request.SignUpRequest
 import com.jjjoonngg.parayo.api.response.ApiResponse
 import com.jjjoonngg.parayo.api.response.ProductImageUploadResponse
 import com.jjjoonngg.parayo.api.response.SignInResponse
 import okhttp3.MultipartBody
+import retrofit2.Response
 import retrofit2.http.*
 
 interface ParayoApi {
@@ -31,4 +33,9 @@ interface ParayoApi {
     suspend fun uploadProductImages(
         @Part images: MultipartBody.Part
     ): ApiResponse<ProductImageUploadResponse>
+
+    @POST("/api/v1/products")
+    suspend fun registerProduct(
+        @Body request: ProductRegistrationRequest
+    ): ApiResponse<Response<Void>>
 }
