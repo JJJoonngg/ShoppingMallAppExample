@@ -28,7 +28,7 @@ class IntroActivity : Activity() {
             if (Prefs.token.isNullOrEmpty()) {
                 startActivity<SignInActivity>()
             } else {
-                startActivity<ProductRegistrationActivity>()
+                startActivity<ProductMainActivity>()
             }
             finish()
         }
