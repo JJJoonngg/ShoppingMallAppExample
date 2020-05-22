@@ -6,6 +6,7 @@ import android.util.Log
 import com.jjjoonngg.parayo.api.ParayoApi
 import com.jjjoonngg.parayo.common.Prefs
 import com.jjjoonngg.parayo.product.ProductMainActivity
+import com.jjjoonngg.parayo.product.registration.ProductRegistrationActivity
 import com.jjjoonngg.parayo.signin.SignInActivity
 import com.jjjoonngg.parayo.signup.SignUpActivity
 import kotlinx.coroutines.GlobalScope
@@ -27,7 +28,7 @@ class IntroActivity : Activity() {
             if (Prefs.token.isNullOrEmpty()) {
                 startActivity<SignInActivity>()
             } else {
-                startActivity<ProductMainActivity>()
+                startActivity<ProductRegistrationActivity>()
             }
             finish()
         }
