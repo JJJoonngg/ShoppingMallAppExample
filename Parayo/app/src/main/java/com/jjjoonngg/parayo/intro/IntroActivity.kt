@@ -2,20 +2,14 @@ package com.jjjoonngg.parayo.intro
 
 import android.app.Activity
 import android.os.Bundle
-import android.util.Log
-import com.jjjoonngg.parayo.api.ParayoApi
 import com.jjjoonngg.parayo.common.Prefs
 import com.jjjoonngg.parayo.product.ProductMainActivity
-import com.jjjoonngg.parayo.product.registration.ProductRegistrationActivity
 import com.jjjoonngg.parayo.signin.SignInActivity
-import com.jjjoonngg.parayo.signup.SignUpActivity
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import org.jetbrains.anko.setContentView
 import org.jetbrains.anko.startActivity
-import java.lang.Exception
 
 class IntroActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
