@@ -4,7 +4,10 @@ import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
+import com.bumptech.glide.Glide
 import com.jjjoonngg.parayo.R
+import com.jjjoonngg.parayo.api.ApiGenerator
+import net.codephobia.ankomvvm.databinding.bindUrl
 import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
@@ -39,5 +42,14 @@ class ProductRegistrationUI(
         scaleType = ImageView.ScaleType.CENTER
         backgroundColor = 0xFFEEEEEE.toInt()
         onClick { viewModel.pickImage(imageNum) }
+        bindUrl(ui.owner, viewModel.imagesUrls[imageNum]) {
+            it?.let {
+                scaleType = ImageView.ScaleType.CENTER_CROP
+                Glide.with(this)
+                    .load("${ApiGenerator.HOST}$it")
+                    .centerCrop()
+                    .into(this)
+            }
+        }
     }.lparams(dip(60), dip(60))
 }
