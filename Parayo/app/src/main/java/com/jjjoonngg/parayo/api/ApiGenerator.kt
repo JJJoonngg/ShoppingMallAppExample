@@ -13,9 +13,22 @@ class ApiGenerator {
         .build()
         .create(api)
 
+    fun <T> generateRefreshClient(api: Class<T>): T = Retrofit.Builder()
+        .baseUrl(HOST)
+        .addConverterFactory(GsonConverterFactory.create())
+        .client(refreshClient())
+        .build()
+        .create(api)
+
     private fun httpClient() =
         OkHttpClient.Builder().apply {
             addInterceptor(httpLoggingInterceptor())
+        }.build()
+
+    private fun refreshClient() =
+        OkHttpClient.Builder().apply {
+            addInterceptor(httpLoggingInterceptor())
+            addInterceptor(TokenRefreshInterceptor())
         }.build()
 
     private fun httpLoggingInterceptor() =
