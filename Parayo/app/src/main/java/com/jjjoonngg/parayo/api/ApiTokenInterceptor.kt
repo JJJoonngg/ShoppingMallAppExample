@@ -11,7 +11,7 @@ class ApiTokenInterceptor : Interceptor, AnkoLogger {
         debug("API 요청")
         val original = chain.request()
         val request = original.newBuilder().apply {
-            Prefs.token?.let { header("Autorization", it) }
+            Prefs.token?.let { header("Authorization", it) }
             method(original.method(), original.body())
         }.build()
         return chain.proceed(request)
