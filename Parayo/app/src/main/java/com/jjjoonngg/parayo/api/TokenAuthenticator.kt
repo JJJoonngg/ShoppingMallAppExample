@@ -1,7 +1,5 @@
 package com.jjjoonngg.parayo.api
 
-import com.example.parayo.api.response.ApiResponse
-import com.example.parayo.common.Prefs
 import com.jjjoonngg.parayo.api.response.ApiResponse
 import com.jjjoonngg.parayo.common.Prefs
 import kotlinx.coroutines.Dispatchers
