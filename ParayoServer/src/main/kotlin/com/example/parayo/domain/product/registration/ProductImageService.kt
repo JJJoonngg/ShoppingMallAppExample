@@ -4,7 +4,6 @@ import com.example.parayo.common.ParayoException
 import com.example.parayo.domain.product.ProductImage
 import com.example.parayo.domain.product.ProductImageRepository
 import net.coobird.thumbnailator.Thumbnails
-import net.coobird.thumbnailator.geometry.Position
 import net.coobird.thumbnailator.geometry.Positions
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
@@ -18,7 +17,7 @@ import java.util.*
 class ProductImageService @Autowired constructor(
     private val productImageRepository: ProductImageRepository
 ) {
-    @Value("\${parayo.file-upload-default-dir}")
+    @Value("/parayo")
     var uploadPath: String? = ""
 
     fun uploadImage(image: MultipartFile): ProductImageUploadResponse {

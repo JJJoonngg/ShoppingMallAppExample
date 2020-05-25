@@ -17,7 +17,7 @@ class WebConfig @Autowired constructor(
     }
 
     override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
-        registry.addResourceHandler("/imgaes/**")
-            .addResourceLocations("file:///Users/jjong/parayo/images/")
+        registry.addResourceHandler("/images/**")
+            .addResourceLocations("file:///parayo/images/")
     }
 }

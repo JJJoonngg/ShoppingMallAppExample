@@ -1,5 +1,7 @@
 package com.jjjoonngg.parayo.api
 
+import com.example.parayo.api.response.ApiResponse
+import com.example.parayo.common.Prefs
 import com.jjjoonngg.parayo.api.response.ApiResponse
 import com.jjjoonngg.parayo.common.Prefs
 import kotlinx.coroutines.Dispatchers
@@ -11,10 +13,13 @@ import okhttp3.Response
 import okhttp3.Route
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.debug
-import java.lang.Exception
+import org.jetbrains.anko.error
 
 class TokenAuthenticator : Authenticator, AnkoLogger {
-    override fun authenticate(route: Route?, response: Response): Request? {
+    override fun authenticate(
+        route: Route?,
+        response: Response
+    ): Request? {
         if (response.code() == 401) {
             debug("토큰 갱신 필요")
             return runBlocking {
@@ -24,7 +29,7 @@ class TokenAuthenticator : Authenticator, AnkoLogger {
                     debug("토큰 갱신 성공")
                     Prefs.token = tokenResponse.data
                 } else {
-                    error("토큰 갱신 실패")
+                    error("토큰 갱신 실패.")
                     Prefs.token = null
                     Prefs.refreshToken = null
                 }
@@ -33,11 +38,12 @@ class TokenAuthenticator : Authenticator, AnkoLogger {
                     debug("토큰 = $token")
                     response.request()
                         .newBuilder()
-                        .header("Autorization", token)
+                        .header("Authorization", token)
                         .build()
                 }
             }
         }
+
         return null
     }
 
@@ -45,7 +51,7 @@ class TokenAuthenticator : Authenticator, AnkoLogger {
         withContext(Dispatchers.IO) {
             try {
                 ParayoRefreshApi.instance.refreshToken()
-            } catch (exception: Exception) {
+            } catch (e: Exception) {
                 ApiResponse.error<String>("인증 실패")
             }
         }
