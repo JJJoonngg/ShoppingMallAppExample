@@ -7,7 +7,7 @@ import javax.persistence.*
 @Entity(name = "product")
 class Product(
     @Column(length = 40)
-    var nme: String,
+    var name: String,
     @Column(length = 500)
     var description: String,
     var price: Int,
