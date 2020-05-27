@@ -5,6 +5,7 @@ import com.jjjoonngg.parayo.api.request.SignInRequest
 import com.jjjoonngg.parayo.api.request.SignUpRequest
 import com.jjjoonngg.parayo.api.response.ApiResponse
 import com.jjjoonngg.parayo.api.response.ProductImageUploadResponse
+import com.jjjoonngg.parayo.api.response.ProductListItemResponse
 import com.jjjoonngg.parayo.api.response.SignInResponse
 import okhttp3.MultipartBody
 import retrofit2.Response
@@ -38,4 +39,11 @@ interface ParayoApi {
     suspend fun registerProduct(
         @Body request: ProductRegistrationRequest
     ): ApiResponse<Response<Void>>
+
+    @GET("/api/v1/products")
+    suspend fun getProducts(
+        @Query("productId") productId:Long,
+        @Query("categoryId") categoryId:Int?,
+        @Query("direction") direction:String //prev, next
+    ):ApiResponse<List<ProductListItemResponse>>
 }
