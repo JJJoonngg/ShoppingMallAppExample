@@ -46,6 +46,10 @@ dependencies {
     implementation "org.jetbrains.anko:anko-design-coroutines:$anko_version"
     implementation "org.jetbrains.anko:anko-constraint-layout:$anko_version"
 
+    implementation "org.jetbrains.anko:anko-recyclerview-v7:$anko_version"
+    implementation "org.jetbrains.anko:anko-recyclerview-v7-coroutines:$anko_version"
+    implementation "androidx.paging:paging-runtime-ktx:2.1.0"
+
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
