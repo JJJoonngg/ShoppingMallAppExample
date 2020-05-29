@@ -2,6 +2,7 @@ package com.example.parayo.domain.product
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.PageRequest
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import java.lang.IllegalArgumentException
 
@@ -28,6 +29,8 @@ class ProductService @Autowired constructor(
             else -> throw  IllegalArgumentException("상품 검색 조건 오류")
         }
     }
+
+    fun get(id: Long) = productRepository.findByIdOrNull(id)
 
     data class ProductSearchCondition(
         val categoryIdIsNotNll: Boolean,
