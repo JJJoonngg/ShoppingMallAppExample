@@ -12,4 +12,12 @@ interface ProductRepository : JpaRepository<Product, Long> {
     fun findByCategoryIdAndIdLessThanOrderByIdDesc(
         categoryId: Int?, id: Long, pageable: Pageable
     ): List<Product>
+
+    fun findByIdGreaterThanAndNameLikeOrderByIdDesc(
+        id: Long, keyword: String, pageable: Pageable
+    ): List<Product>
+
+    fun findByIdLessThanAndNameLikeOrderByIdDesc(
+        id: Long, keyword: String, pageable: Pageable
+    ): List<Product>
 }
