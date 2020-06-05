@@ -22,7 +22,7 @@ class SignInService @Autowired constructor(
         }
         user.fcmToken = signInRequest.fcmToken
         userRepository.save(user)
-        
+
         return responseWithTokens(user)
     }
 
