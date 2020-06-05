@@ -48,4 +48,8 @@ interface ParayoApi {
     @GET("/api/v1/products/{id}")
     suspend fun getProduct(@Path("id") id: Long)
             : ApiResponse<ProductResponse>
+
+    @PUT("/api/v1/users/fcm-token")
+    suspend fun updateFcmToken(fcmToken: String)
+            : ApiResponse<Response<Void>>
 }
