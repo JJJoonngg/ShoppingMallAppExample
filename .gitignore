@@ -6,6 +6,7 @@ google-services.json
 .idea/
 gradlew.*
 application.yml
+resources/
 
 ### Android ###
 # Built application files
