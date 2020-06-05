@@ -1,12 +1,14 @@
 package com.jjjoonngg.parayo.api.request
 
 import android.util.Patterns
+import com.jjjoonngg.parayo.common.Prefs
 import java.util.regex.Pattern
 
 class SignUpRequest(
     val email: String?,
     val password: String?,
-    val name: String?
+    val name: String?,
+    val fcmToken: String? = Prefs.fcmToken
 ) {
 
     fun isNotValidEmail() =
