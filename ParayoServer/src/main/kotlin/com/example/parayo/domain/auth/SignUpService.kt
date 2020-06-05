@@ -52,7 +52,7 @@ class SignUpService @Autowired constructor(
     private fun registerUser(signUpRequest: SignUpRequest) =
         with(signUpRequest) {
             val hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt())
-            val user = User(email, hashedPassword, name)
+            val user = User(email, hashedPassword, name, fcmToken)
             userRepository.save(user)
         }
 }

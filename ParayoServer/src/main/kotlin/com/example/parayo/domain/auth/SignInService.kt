@@ -20,6 +20,9 @@ class SignInService @Autowired constructor(
         if (isNotValidPassword(signInRequest.password, user.password)) {
             throw ParayoException("로그인 정보를 확인해주세요.")
         }
+        user.fcmToken = signInRequest.fcmToken
+        userRepository.save(user)
+        
         return responseWithTokens(user)
     }
 
@@ -28,12 +31,12 @@ class SignInService @Autowired constructor(
         hashed: String
     ) = BCrypt.checkpw(plain, hashed).not()
 
-    private fun responseWithTokens(user: User) = user.id?.let {userId->
+    private fun responseWithTokens(user: User) = user.id?.let { userId ->
         SignInResponse(
             JWTUtil.createToken(user.email),
             JWTUtil.createRefreshToken(user.email),
             user.name,
             userId
         )
-    }?:throw IllegalStateException("user.id 없음.")
+    } ?: throw IllegalStateException("user.id 없음.")
 }
