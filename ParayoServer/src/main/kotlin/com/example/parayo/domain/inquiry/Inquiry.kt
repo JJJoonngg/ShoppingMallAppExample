@@ -13,7 +13,7 @@ data class Inquiry(
     val requestUserId: Long,
     val productOwnerId: Long,
     val question: String,
-    val answer: String? = null
+    var answer: String? = null
 ) : BaseEntity() {
 
     @ManyToOne

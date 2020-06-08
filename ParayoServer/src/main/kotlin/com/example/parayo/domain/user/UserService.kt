@@ -8,11 +8,13 @@ import java.lang.IllegalStateException
 @Service
 class UserService @Autowired constructor(
     private val userRepository: UserRepository
-){
+) {
 
-    fun updateFcmToken(userId:Long, fcmToken:String)=
-        userRepository.findByIdOrNull(userId)?.run{
+    fun updateFcmToken(userId: Long, fcmToken: String) =
+        userRepository.findByIdOrNull(userId)?.run {
             this.fcmToken = fcmToken
             userRepository.save(this)
-        }?: throw IllegalStateException("사용자 정보 없음")
+        } ?: throw IllegalStateException("사용자 정보 없음")
+
+    fun find(userId: Long) = userRepository.findByIdOrNull(userId)
 }
