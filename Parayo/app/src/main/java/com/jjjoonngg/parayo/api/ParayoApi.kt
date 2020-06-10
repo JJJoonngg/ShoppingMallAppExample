@@ -1,5 +1,6 @@
 package com.jjjoonngg.parayo.api
 
+import com.jjjoonngg.parayo.api.request.InquiryRequest
 import com.jjjoonngg.parayo.api.request.ProductRegistrationRequest
 import com.jjjoonngg.parayo.api.request.SignInRequest
 import com.jjjoonngg.parayo.api.request.SignUpRequest
@@ -62,4 +63,8 @@ interface ParayoApi {
         @Query("direction") direction: String // prev,next
     ): ApiResponse<List<InquiryResponse>>
 
+    @POST("/api/v1/inquiries")
+    suspend fun registerInquiry(
+        @Body request: InquiryRequest
+    ): ApiResponse<Response<Void>>
 }
