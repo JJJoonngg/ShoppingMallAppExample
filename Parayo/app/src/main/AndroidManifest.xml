@@ -29,6 +29,7 @@
             android:theme="@style/Theme.AppCompat.Light" />
         <activity android:name=".product.search.ProductSearchActivity" />
         <activity android:name=".inquiry.ProductInquiryActivity" />
+        <activity android:name=".inquiry.registration.InquiryRegistrationActivity" />
 
         <service android:name=".fcm.ParayoMessagingService">
             <intent-filter>
