@@ -15,6 +15,7 @@ import com.google.android.material.tabs.TabLayout.GRAVITY_FILL
 import com.google.android.material.tabs.TabLayout.MODE_SCROLLABLE
 import com.jjjoonngg.parayo.R
 import com.jjjoonngg.parayo.common.Prefs
+import com.jjjoonngg.parayo.inquiry.myinquiry.MyInquiryActivity
 import com.jjjoonngg.parayo.signin.SignInActivity
 import com.jjjoonngg.parayo.view.borderBottom
 import org.jetbrains.anko.*
@@ -109,7 +110,7 @@ class ProductMainUI(
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             MENU_ID_INQUIRY -> {
-                viewModel.toast("내 문의")
+                viewModel.startActivity<MyInquiryActivity>()
             }
             MENU_ID_LOGOUT -> {
                 Prefs.token = null

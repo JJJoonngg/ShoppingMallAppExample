@@ -30,6 +30,7 @@
         <activity android:name=".product.search.ProductSearchActivity" />
         <activity android:name=".inquiry.ProductInquiryActivity" />
         <activity android:name=".inquiry.registration.InquiryRegistrationActivity" />
+        <activity android:name=".inquiry.myinquiry.MyInquiryActivity" />
 
         <service android:name=".fcm.ParayoMessagingService">
             <intent-filter>
